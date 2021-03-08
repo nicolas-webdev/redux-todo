@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import HomeSection from "./HomeSection";
 import CustomSection from "./CustomSection";
-import { sectionSelector } from "../features/counter/fakeState";
+import { sectionSelector } from "../../features/counter/fakeState";
 
 const SectionList = () => {
   const sectionsArray = sectionSelector();

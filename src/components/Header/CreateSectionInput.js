@@ -1,28 +1,29 @@
 import { useState } from "react";
 import styled from "styled-components";
-import AddList from "../img/AddList.svg";
+import AddList from "../../img/AddList.svg";
 
 const CreateSectionInput = () => {
   const [inputValue, setInputValue] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(e.target.newlist.value);
+    e.target.blur();
     setInputValue("");
   };
   return (
     <StyledForm
-      autocomplete="off"
       action="/"
       method="post"
       onSubmit={handleSubmit}
+      autocomplete="chrome-off"
     >
       <StyledInput
         type="text"
         value={inputValue}
         onChange={({ target: { value } }) => setInputValue(value)}
         name="newlist"
+        maxLength={24}
         autocomplete="off"
-        maxLength={14}
         required
       />
       <StyledLabel htmlFor="newlist">新しいリスト</StyledLabel>
