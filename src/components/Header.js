@@ -1,18 +1,16 @@
 import styled from "styled-components";
-import { sections, sectionSelector } from "../features/counter/fakeState";
 import CreateSectionInput from "./CreateSectionInput";
+import SectionList from "./SectionList";
 
 const Header = () => {
   // State with a list of Sections, pass which one is the Active section
   // Default to "Main section"
-  const sectionsArray = sectionSelector();
+
   return (
     <StyledHeader>
       <HeaderWrapper>
         <CreateSectionInput />
-        {/* CreateSectionInput */}
-        {/* Main Section*/}
-        {/* Map array of sections from state */}
+        <SectionList />
       </HeaderWrapper>
     </StyledHeader>
   );
@@ -25,16 +23,20 @@ const StyledHeader = styled.div`
     #f4e4e1 0.03%
   );
   width: 100vw;
-  height: 80px;
+  height: 70px;
   display: flex;
   align-items: center;
 `;
 
 const HeaderWrapper = styled.div`
   width: 100%;
+  min-width: 300px;
   max-width: 1120px;
-  margin: auto;
-  padding: 0px 16px;
+  padding: 0px 8px;
+  margin: -5px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export default Header;

@@ -10,17 +10,22 @@ const CreateSectionInput = () => {
     setInputValue("");
   };
   return (
-    <StyledForm autocomplete="off" action="post" onSubmit={handleSubmit}>
+    <StyledForm
+      autocomplete="off"
+      action="/"
+      method="post"
+      onSubmit={handleSubmit}
+    >
       <StyledInput
         type="text"
         value={inputValue}
         onChange={({ target: { value } }) => setInputValue(value)}
         name="newlist"
         autocomplete="off"
-        maxLength={16}
+        maxLength={14}
         required
       />
-      <StyledLabel htmlFor="newlist">新しいリストを追加</StyledLabel>
+      <StyledLabel htmlFor="newlist">新しいリスト</StyledLabel>
       <StyledButton type="submit">
         <img width="22" height="22" alt="" src={AddList} />
       </StyledButton>
@@ -29,8 +34,9 @@ const CreateSectionInput = () => {
 };
 
 const StyledForm = styled.form`
+  margin: 8px 6px 0 0;
   height: 30px;
-  width: 210px;
+  min-width: 140px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid white;
