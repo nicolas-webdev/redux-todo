@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-// import Header from "./components/Header";
+import Header from "./components/Header";
 // import Body from "./components/Body"
 // import TodoBoard from "./components/TodoBoard"
 
@@ -9,7 +9,7 @@ import "./App.css";
 function App() {
   return (
     <div className="app">
-      {/* header */}
+      <Header />
       {/* <body (children) /}
       // todo board
       {/* /body> */}
