@@ -1,12 +1,18 @@
 import React from "react";
 import "./App.css";
+// import Header from "./components/Header";
+// import Body from "./components/Body"
+// import TodoBoard from "./components/TodoBoard"
 
 // import { Counter } from "./features/counter/Counter";
 
 function App() {
   return (
-    <div className="App">
-      <h1>HI</h1>
+    <div className="app">
+      {/* header */}
+      {/* <body (children) /}
+      // todo board
+      {/* /body> */}
     </div>
   );
 }
