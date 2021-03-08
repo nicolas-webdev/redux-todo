@@ -4,19 +4,26 @@ import AddList from "../img/AddList.svg";
 
 const CreateSectionInput = () => {
   const [inputValue, setInputValue] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target.newlist.value);
+    setInputValue("");
+  };
   return (
-    <StyledForm autocomplete="off">
-      <StyledButton>
-        <img type="submit" width="22" height="22" alt="" src={AddList} />
-      </StyledButton>
+    <StyledForm autocomplete="off" action="post" onSubmit={handleSubmit}>
       <StyledInput
         type="text"
         value={inputValue}
         onChange={({ target: { value } }) => setInputValue(value)}
-        name="new-list"
+        name="newlist"
         autocomplete="off"
+        maxLength={16}
+        required
       />
-      <StyledLabel htmlFor="new-list">新しいリストを追加</StyledLabel>
+      <StyledLabel htmlFor="newlist">新しいリストを追加</StyledLabel>
+      <StyledButton type="submit">
+        <img width="22" height="22" alt="" src={AddList} />
+      </StyledButton>
     </StyledForm>
   );
 };
