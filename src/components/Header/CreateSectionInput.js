@@ -7,16 +7,10 @@ const CreateSectionInput = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(e.target.newlist.value);
-    e.target.blur();
     setInputValue("");
   };
   return (
-    <StyledForm
-      action="/"
-      method="post"
-      onSubmit={handleSubmit}
-      autoComplete="chrome-off"
-    >
+    <StyledForm action="/" method="post" onSubmit={handleSubmit}>
       <StyledInput
         type="text"
         value={inputValue}
@@ -42,6 +36,7 @@ const StyledForm = styled.form`
   align-items: center;
   border-bottom: 1px solid white;
   position: relative;
+  z-index: 1991;
 `;
 
 const StyledInput = styled.input`
@@ -53,9 +48,9 @@ const StyledInput = styled.input`
   border: none;
   caret-color: white;
   color: transparent;
-  font-size: 0px;
+  font-size: 1px;
   font-weight: bold;
-
+  z-index: 1894;
   transition: all 0.3s;
   &:focus {
     color: white;
