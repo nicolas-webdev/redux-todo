@@ -15,7 +15,7 @@ const CreateSectionInput = () => {
       action="/"
       method="post"
       onSubmit={handleSubmit}
-      autocomplete="chrome-off"
+      autoComplete="chrome-off"
     >
       <StyledInput
         type="text"
@@ -23,7 +23,7 @@ const CreateSectionInput = () => {
         onChange={({ target: { value } }) => setInputValue(value)}
         name="newlist"
         maxLength={24}
-        autocomplete="off"
+        autoComplete="off"
         required
       />
       <StyledLabel htmlFor="newlist">新しいリスト</StyledLabel>
