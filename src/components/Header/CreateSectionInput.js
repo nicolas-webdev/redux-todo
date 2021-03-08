@@ -6,7 +6,12 @@ const CreateSectionInput = () => {
   const [inputValue, setInputValue] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.newlist.value);
+    const {
+      target: { newlist },
+    } = e;
+    if (newlist.value.length > 0) {
+      console.log(e.target.newlist.value);
+    }
     setInputValue("");
     e.target.newlist.blur();
   };
@@ -19,7 +24,6 @@ const CreateSectionInput = () => {
         name="newlist"
         maxLength={24}
         autoComplete="off"
-        required
       />
       <StyledLabel htmlFor="newlist">新しいリスト</StyledLabel>
       <StyledButton type="submit">
