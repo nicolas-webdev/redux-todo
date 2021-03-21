@@ -1,15 +1,19 @@
 import TodoList from "./TodoList";
+import Controls from "./Controls";
 import styled from "styled-components";
 
 const TodoBoard = () => {
   return (
-    <StyledTodoBoard>
-      <TodoContainer>
-        <TodoBox>
-          <TodoList />
-        </TodoBox>
-      </TodoContainer>
-    </StyledTodoBoard>
+    <>
+      <StyledTodoBoard>
+        <TodoContainer>
+          <TodoBox>
+            <TodoList />
+            <Controls />
+          </TodoBox>
+        </TodoContainer>
+      </StyledTodoBoard>
+    </>
   );
 };
 
@@ -30,6 +34,7 @@ const TodoContainer = styled.div`
   border-radius: 3px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
+
   align-items: center;
   justify-content: center;
 `;
