@@ -7,7 +7,6 @@ const TaskList = () => {
   const tasks = useSelector((state) => state.list);
   const activeList = tasks.filter((list) => list.active)[0].list;
   const listTasks = tasks.filter((list) => list.list === activeList)[0].tasks;
-  console.log(listTasks);
   return (
     <StyledTaskList>
       {listTasks.map(({ id, completed, title }) => (

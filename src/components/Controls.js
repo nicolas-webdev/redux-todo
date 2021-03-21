@@ -7,7 +7,9 @@ import { deleteSection, setActive, cleanTasks } from "../features/listSlice";
 const Controls = () => {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.list);
-  const activeList = tasks.filter((list) => list.active)[0].list;
+  const activeTasks = tasks.filter((list) => list.active)[0];
+  const activeList = activeTasks.list;
+  const tasksCompleted = activeTasks.tasks.some((task) => task.completed);
 
   const handleDelete = (selectedList) => {
     if (selectedList === "ホーム") {
@@ -19,7 +21,13 @@ const Controls = () => {
 
   return (
     <StyledControls>
-      <EraseTasks onClick={() => dispatch(cleanTasks(activeList))}>
+      <EraseTasks
+        onClick={() => dispatch(cleanTasks(activeList))}
+        style={{
+          visibility: tasksCompleted ? "" : "hidden",
+          opacity: tasksCompleted ? 1 : 0,
+        }}
+      >
         <img src={DeleteTaskIcon} alt="" />
         <p>タスクの掃除</p>
       </EraseTasks>
@@ -27,6 +35,7 @@ const Controls = () => {
         onClick={() => handleDelete(activeList)}
         style={{
           visibility: activeList === "ホーム" ? "hidden" : "",
+          opacity: activeList === "ホーム" ? 0 : 1,
         }}
       >
         <img src={DeleteSectionIcon} alt="" />
@@ -48,6 +57,7 @@ const EraseTasks = styled.div`
   display: flex;
   align-items: center;
   color: #bd9787;
+  transition: all 0.3s ease;
   img {
     height: 24px;
     width: 24px;

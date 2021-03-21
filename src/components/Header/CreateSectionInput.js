@@ -18,8 +18,8 @@ const CreateSectionInput = () => {
     } = e;
     if (newlist.value.length > 0 && !sectionsArray.includes(newlist.value)) {
       dispatch(addList(newlist.value));
-      dispatch(setActive(newlist.value));
     }
+    dispatch(setActive(newlist.value));
     setInputValue("");
     e.target.newlist.blur();
   };

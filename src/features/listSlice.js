@@ -1,40 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = [
+  {
+    list: "ホーム",
+    active: true,
+    id: 0,
+    tasks: [
+      {
+        id: 0,
+        title: "タスクを追加しよう",
+        completed: false,
+      },
+    ],
+  },
+];
+
 const loadState = () => {
   try {
     const serializedState = localStorage.getItem("state");
     if (serializedState === null) {
-      return [
-        {
-          list: "ホーム",
-          active: true,
-          id: 0,
-          tasks: [
-            {
-              id: 0,
-              title: "タスクを追加しよう",
-              completed: false,
-            },
-          ],
-        },
-      ];
+      return initialState;
     }
     return JSON.parse(serializedState).list;
   } catch (err) {
-    return [
-      {
-        list: "ホーム",
-        active: true,
-        id: 0,
-        tasks: [
-          {
-            id: 0,
-            title: "タスクを追加しよう",
-            completed: false,
-          },
-        ],
-      },
-    ];
+    console.log("データの読み込みに失敗しました", err);
+    return initialState;
   }
 };
 

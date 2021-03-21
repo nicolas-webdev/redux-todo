@@ -25,7 +25,6 @@ const TaskInput = () => {
       dispatch(addTask({ list: activeList, task: newTask }));
     }
     setInputValue("");
-    e.target.newtask.blur();
   };
   return (
     <StyledForm action="/" method="post" onSubmit={handleSubmit}>

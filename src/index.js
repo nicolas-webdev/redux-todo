@@ -6,12 +6,15 @@ import store from "./app/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { saveState } from "./features/localStorage";
+import throttle from "lodash/throttle";
 
-store.subscribe(() => {
-  saveState({
-    list: store.getState().list,
-  });
-});
+store.subscribe(
+  throttle(() => {
+    saveState({
+      list: store.getState().list,
+    });
+  }, 1000)
+);
 
 ReactDOM.render(
   <React.StrictMode>
