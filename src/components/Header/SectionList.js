@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import HomeSection from "./HomeSection";
 import CustomSection from "./CustomSection";
-import { sectionSelector } from "../../features/counter/fakeState";
+import { useSelector, useDispatch } from "react-redux";
 
 const SectionList = () => {
-  const sectionsArray = sectionSelector();
+  const sectionsArray = useSelector((state) =>
+    state.task.map((section) => section.list)
+  );
   return (
     <StyledSections>
       <HomeSection />

@@ -5,6 +5,7 @@ export const taskSlice = createSlice({
   initialState: [
     {
       list: "ホーム",
+      active: true,
       id: 0,
       tasks: [
         {
@@ -23,15 +24,34 @@ export const taskSlice = createSlice({
         tasks: [],
       });
     },
+
+    setActive: (state, action) => {
+      state = state.map((section) => {
+        if (section.list === action.payload) {
+          return {
+            ...section,
+            active: true,
+          };
+        } else {
+          return {
+            ...section,
+            active: false,
+          };
+        }
+      });
+    },
+
     addTask: (state, action) => {
       state = state.map((section) => ({
         ...section,
         tasks: [action.payload.task, ...section.tasks],
       }));
     },
+
     deleteSection: (state, action) => {
       state = state.filter((section) => section.list !== action.payload);
     },
+
     cleanTasks: (state, action) => {
       state = state.map((section) => {
         if (section.list !== action.payload) {
