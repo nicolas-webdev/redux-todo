@@ -30,6 +30,9 @@ const StyledTask = styled.div`
   display: flex;
   align-items: center;
   text-align: left;
+  &:hover {
+    filter: brightness(0.95);
+  }
 `;
 
 const TaskTitle = styled.h3`
