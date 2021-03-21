@@ -22,7 +22,7 @@ const TaskInput = () => {
         value={inputValue}
         onChange={({ target: { value } }) => setInputValue(value)}
         name="newtask"
-        maxLength={80}
+        maxLength={10}
         autoComplete="off"
       />
       <StyledLabel htmlFor="newtask">新しいタスク</StyledLabel>

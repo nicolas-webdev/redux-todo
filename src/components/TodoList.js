@@ -1,4 +1,5 @@
 import TaskInput from "./TaskInput";
+import TaskList from "./TaskList";
 import styled from "styled-components";
 
 const TodoList = () => {
@@ -7,6 +8,7 @@ const TodoList = () => {
       <StyledTitle>リストのタイトル</StyledTitle>
       <StyledProgress>あと１つ</StyledProgress>
       <TaskInput />
+      <TaskList />
     </StyledList>
   );
 };
@@ -16,6 +18,7 @@ const StyledList = styled.div`
   width: 100%;
   padding: 20px;
   text-align: center;
+  overflow-y: scroll;
 `;
 
 const StyledTitle = styled.h1`

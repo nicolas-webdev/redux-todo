@@ -14,7 +14,7 @@ const TodoBoard = () => {
 };
 
 const StyledTodoBoard = styled.div`
-  padding-top: 40px;
+  padding-top: 90px;
   height: 100%;
   width: 100%;
   display: flex;

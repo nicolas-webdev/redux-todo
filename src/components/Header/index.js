@@ -26,6 +26,9 @@ const StyledHeader = styled.div`
   height: 70px;
   display: flex;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
 const HeaderWrapper = styled.div`
