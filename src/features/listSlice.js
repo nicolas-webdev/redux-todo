@@ -42,10 +42,15 @@ export const listSlice = createSlice({
     },
 
     addTask: (state, action) => {
-      return state.map((section) => ({
-        ...section,
-        tasks: [action.payload.task, ...section.tasks],
-      }));
+      return state.map((section) => {
+        if (section.list === action.payload.list) {
+          return {
+            ...section,
+            tasks: [action.payload.task, ...section.tasks],
+          };
+        }
+        return { ...section };
+      });
     },
 
     deleteSection: (state, action) => {

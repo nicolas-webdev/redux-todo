@@ -1,8 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
 import AddTask from "../img/AddTask.svg";
+import { useSelector, useDispatch } from "react-redux";
+import { addTask } from "../features/listSlice";
 
 const TaskInput = () => {
+  const dispatch = useDispatch();
+  const tasks = useSelector((state) => state.list);
+  const activeList = tasks.filter((list) => list.active)[0].list;
+
   const [inputValue, setInputValue] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,7 +16,13 @@ const TaskInput = () => {
       target: { newtask },
     } = e;
     if (newtask.value.length > 0) {
-      console.log(e.target.newtask.value);
+      const newTask = {
+        id: new Date().getTime(),
+        completed: false,
+        title: e.target.newtask.value,
+      };
+
+      dispatch(addTask({ list: activeList, task: newTask }));
     }
     setInputValue("");
     e.target.newtask.blur();
@@ -22,7 +34,7 @@ const TaskInput = () => {
         value={inputValue}
         onChange={({ target: { value } }) => setInputValue(value)}
         name="newtask"
-        maxLength={20}
+        maxLength={30}
         autoComplete="off"
       />
       <StyledLabel htmlFor="newtask">新しいタスク</StyledLabel>

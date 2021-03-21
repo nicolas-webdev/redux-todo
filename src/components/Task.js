@@ -29,6 +29,7 @@ const StyledTask = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  text-align: left;
 `;
 
 const TaskTitle = styled.h3`
