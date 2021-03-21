@@ -2,11 +2,20 @@ import TaskInput from "./TaskInput";
 import TaskList from "./TaskList";
 import styled from "styled-components";
 
+import { useSelector } from "react-redux";
+
 const TodoList = () => {
+  const tasks = useSelector((state) => state.list);
+  const activeList = tasks.filter((list) => list.active)[0];
+  const tasksRemaining = activeList.tasks.filter((task) => !task.completed)
+    .length;
+
   return (
     <StyledList>
-      <StyledTitle>リストのタイトル</StyledTitle>
-      <StyledProgress>あと１つ</StyledProgress>
+      <StyledTitle>{activeList.list}</StyledTitle>
+      <StyledProgress>
+        {tasksRemaining ? `あと${tasksRemaining}つ` : "全クリア！"}
+      </StyledProgress>
       <TaskInput />
       <TaskList />
     </StyledList>
