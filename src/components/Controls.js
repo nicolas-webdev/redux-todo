@@ -23,7 +23,12 @@ const Controls = () => {
         <img src={DeleteTaskIcon} alt="" />
         <p>タスクの掃除</p>
       </EraseTasks>
-      <EraseList onClick={() => handleDelete(activeList)}>
+      <EraseList
+        onClick={() => handleDelete(activeList)}
+        style={{
+          visibility: activeList === "ホーム" ? "hidden" : "",
+        }}
+      >
         <img src={DeleteSectionIcon} alt="" />
         <p>リストを削除</p>
       </EraseList>

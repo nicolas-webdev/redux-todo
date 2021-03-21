@@ -24,6 +24,7 @@ const Task = ({ completed, title, id }) => {
 
 const StyledTask = styled.div`
   cursor: pointer;
+  padding: 0px 10px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -32,10 +33,8 @@ const StyledTask = styled.div`
 
 const TaskTitle = styled.h3`
   padding: 3px 6px;
-  margin-top: -3px;
   font-weight: normal;
-  line-height: 35px;
-  font-size: 24px;
+  font-size: 16px;
   color: #625855;
 `;
 
