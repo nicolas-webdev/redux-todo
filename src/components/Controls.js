@@ -7,7 +7,7 @@ const Controls = () => {
     <StyledControls>
       <EraseTasks>
         <img src={DeleteTaskIcon} alt="" />
-        <p>タスクを削除</p>
+        <p>タスクの掃除</p>
       </EraseTasks>
       <EraseList>
         <img src={DeleteSectionIcon} alt="" />
