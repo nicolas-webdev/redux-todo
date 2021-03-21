@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const taskSlice = createSlice({
-  name: "task",
+export const listSlice = createSlice({
+  name: "list",
   initialState: [
     {
       list: "ホーム",
@@ -21,39 +21,39 @@ export const taskSlice = createSlice({
       state.push({
         list: action.payload,
         id: state.length,
+        active: true,
         tasks: [],
       });
     },
 
     setActive: (state, action) => {
-      state = state.map((section) => {
+      return state.map((section) => {
         if (section.list === action.payload) {
           return {
             ...section,
             active: true,
           };
-        } else {
-          return {
-            ...section,
-            active: false,
-          };
         }
+        return {
+          ...section,
+          active: false,
+        };
       });
     },
 
     addTask: (state, action) => {
-      state = state.map((section) => ({
+      return state.map((section) => ({
         ...section,
         tasks: [action.payload.task, ...section.tasks],
       }));
     },
 
     deleteSection: (state, action) => {
-      state = state.filter((section) => section.list !== action.payload);
+      return state.filter((section) => section.list !== action.payload);
     },
 
     cleanTasks: (state, action) => {
-      state = state.map((section) => {
+      return state.map((section) => {
         if (section.list !== action.payload) {
           return section;
         }
@@ -68,9 +68,10 @@ export const taskSlice = createSlice({
 
 export const {
   addList,
+  setActive,
   addTask,
   deleteSection,
   cleanTasks,
-} = taskSlice.actions;
+} = listSlice.actions;
 
-export default taskSlice.reducer;
+export default listSlice.reducer;

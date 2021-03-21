@@ -3,9 +3,6 @@ import CreateSectionInput from "./CreateSectionInput";
 import SectionList from "./SectionList";
 
 const Header = () => {
-  // State with a list of Sections, pass which one is the Active section
-  // Default to "Main section"
-
   return (
     <StyledHeader>
       <HeaderWrapper>

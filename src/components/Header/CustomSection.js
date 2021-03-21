@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
-const CustomSection = ({ section }) => {
+const CustomSection = ({ section, handler }) => {
   return (
-    <StyledSection>
-      <span>{section.name}</span>
+    <StyledSection onClick={handler}>
+      <span style={{ fontWeight: section.active ? "bold" : "normal" }}>
+        {section.list}
+      </span>
     </StyledSection>
   );
 };

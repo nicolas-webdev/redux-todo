@@ -1,16 +1,24 @@
 import { useState } from "react";
 import styled from "styled-components";
 import AddList from "../../img/AddList.svg";
+import { useSelector, useDispatch } from "react-redux";
+import { setActive, addList } from "../../features/listSlice";
 
 const CreateSectionInput = () => {
+  const dispatch = useDispatch();
+
+  const sections = useSelector((state) => state.list);
+  const sectionsArray = sections.map((section) => section.list);
+
   const [inputValue, setInputValue] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     const {
       target: { newlist },
     } = e;
-    if (newlist.value.length > 0) {
-      console.log(e.target.newlist.value);
+    if (newlist.value.length > 0 && !sectionsArray.includes(newlist.value)) {
+      dispatch(addList(newlist.value));
+      dispatch(setActive(newlist.value));
     }
     setInputValue("");
     e.target.newlist.blur();

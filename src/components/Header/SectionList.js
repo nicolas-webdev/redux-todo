@@ -1,18 +1,20 @@
 import styled from "styled-components";
-import HomeSection from "./HomeSection";
 import CustomSection from "./CustomSection";
 import { useSelector, useDispatch } from "react-redux";
+import { setActive } from "../../features/listSlice";
 
 const SectionList = () => {
-  const sectionsArray = useSelector((state) =>
-    state.task.map((section) => section.list)
-  );
+  const sectionsArray = useSelector((state) => state.list);
+  const dispatch = useDispatch();
   return (
     <StyledSections>
-      <HomeSection />
-      {sectionsArray.length > 0
-        ? sectionsArray.map((section) => <CustomSection section={section} />)
-        : null}
+      {sectionsArray.map((section) => (
+        <CustomSection
+          key={section.name}
+          section={section}
+          handler={() => dispatch(setActive(section.list))}
+        />
+      ))}
     </StyledSections>
   );
 };
