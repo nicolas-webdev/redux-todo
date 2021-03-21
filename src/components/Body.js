@@ -5,7 +5,7 @@ const Body = ({ children }) => {
 };
 
 const StyledBody = styled.div`
-  height: calc(100vh - 70px);
+  height: 100vh;
   width: 100%;
   background: #f7f1ec;
 `;

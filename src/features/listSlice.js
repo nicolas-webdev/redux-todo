@@ -1,21 +1,46 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const loadState = () => {
+  try {
+    const serializedState = localStorage.getItem("state");
+    if (serializedState === null) {
+      return [
+        {
+          list: "ホーム",
+          active: true,
+          id: 0,
+          tasks: [
+            {
+              id: 0,
+              title: "タスクを追加しよう",
+              completed: false,
+            },
+          ],
+        },
+      ];
+    }
+    return JSON.parse(serializedState).list;
+  } catch (err) {
+    return [
+      {
+        list: "ホーム",
+        active: true,
+        id: 0,
+        tasks: [
+          {
+            id: 0,
+            title: "タスクを追加しよう",
+            completed: false,
+          },
+        ],
+      },
+    ];
+  }
+};
+
 export const listSlice = createSlice({
   name: "list",
-  initialState: [
-    {
-      list: "ホーム",
-      active: true,
-      id: 0,
-      tasks: [
-        {
-          id: 0,
-          title: "タスクを追加しよう",
-          completed: false,
-        },
-      ],
-    },
-  ],
+  initialState: loadState(),
   reducers: {
     addList: (state, action) => {
       state.push({
