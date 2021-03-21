@@ -2,7 +2,7 @@ import styled from "styled-components";
 import DeleteTaskIcon from "../img/DeleteTasks.svg";
 import DeleteSectionIcon from "../img/DeleteSection.svg";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteSection, setActive } from "../features/listSlice";
+import { deleteSection, setActive, cleanTasks } from "../features/listSlice";
 
 const Controls = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const Controls = () => {
 
   return (
     <StyledControls>
-      <EraseTasks>
+      <EraseTasks onClick={() => dispatch(cleanTasks(activeList))}>
         <img src={DeleteTaskIcon} alt="" />
         <p>タスクの掃除</p>
       </EraseTasks>

@@ -10,7 +10,7 @@ const SectionList = () => {
     <StyledSections>
       {sectionsArray.map((section) => (
         <CustomSection
-          key={section.name}
+          key={section.list}
           section={section}
           handler={() => dispatch(setActive(section.list))}
         />

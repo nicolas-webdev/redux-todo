@@ -52,6 +52,28 @@ export const listSlice = createSlice({
       return state.filter((section) => section.list !== action.payload);
     },
 
+    toggleComplete: (state, action) => {
+      return state.map((section) => {
+        if (section.list !== action.payload.list) {
+          return section;
+        }
+        return {
+          ...section,
+          tasks: section.tasks.map((task) => {
+            if (task.id === action.payload.id) {
+              return {
+                ...task,
+                completed: !task.completed,
+              };
+            }
+            return {
+              ...task,
+            };
+          }),
+        };
+      });
+    },
+
     cleanTasks: (state, action) => {
       return state.map((section) => {
         if (section.list !== action.payload) {
@@ -71,6 +93,7 @@ export const {
   setActive,
   addTask,
   deleteSection,
+  toggleComplete,
   cleanTasks,
 } = listSlice.actions;
 
